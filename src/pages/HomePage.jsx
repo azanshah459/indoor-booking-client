@@ -71,13 +71,40 @@ function HomePage() {
           </div>
         </div>
       )}
+
+      {/* About Section */}
+      <div style={styles.about}>
+        <h2 style={styles.aboutTitle}>About Us</h2>
+        <p style={styles.aboutText}>
+          We provide premium indoor Cricket and Futsal grounds designed for
+          players who want a reliable, well-maintained space to play any time
+          of day. Our online booking system makes it simple to check
+          availability and reserve your slot in seconds — no more back and
+          forth on WhatsApp.
+        </p>
+
+        <div style={styles.aboutStats}>
+          <div style={styles.aboutStat}>
+            <span style={styles.aboutStatNumber}>2+</span>
+            <span style={styles.aboutStatLabel}>Grounds Available</span>
+          </div>
+          <div style={styles.aboutStat}>
+            <span style={styles.aboutStatNumber}>13</span>
+            <span style={styles.aboutStatLabel}>Slots Daily</span>
+          </div>
+          <div style={styles.aboutStat}>
+            <span style={styles.aboutStatNumber}>24/7</span>
+            <span style={styles.aboutStatLabel}>Online Booking</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 const styles = {
   hero: {
-    backgroundColor: '#1a1a2e',
+    backgroundColor: '#6a9c61',
     color: 'white',
     textAlign: 'center',
     padding: '5rem 2rem',
@@ -88,7 +115,7 @@ const styles = {
   },
   heroSubtitle: {
     fontSize: '1.1rem',
-    color: '#a0aec0',
+    color: '#ffffff',
     marginBottom: '2rem',
   },
   heroButton: {
@@ -130,7 +157,7 @@ const styles = {
     lineHeight: '1.6',
   },
   cta: {
-    backgroundColor: '#f7fafc',
+    backgroundColor: '#346989',
     textAlign: 'center',
     padding: '4rem 2rem',
     borderTop: '1px solid #e2e8f0',
@@ -166,6 +193,45 @@ const styles = {
     borderRadius: '4px',
     fontSize: '1rem',
     cursor: 'pointer',
+  },
+  about: {
+    backgroundColor: 'black',
+    textAlign: 'center',
+    padding: '4rem 2rem',
+    borderTop: '1px solid #e2e8f0',
+  },
+  aboutTitle: {
+    fontSize: '2rem',
+    color: '#ffffff',
+    marginBottom: '1rem',
+  },
+  aboutText: {
+    color: '#ffffff',
+    fontSize: '1.2rem',
+    lineHeight: '1.8',
+    maxWidth: '700px',
+    margin: '0 auto 2.5rem auto',
+  },
+  aboutStats: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '3rem',
+    flexWrap: 'wrap',
+  },
+  aboutStat: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.4rem',
+  },
+  aboutStatNumber: {
+    fontSize: '2rem',
+    fontWeight: '700',
+    color: '#ffffff',
+  },
+  aboutStatLabel: {
+    fontSize: '0.85rem',
+    color: '#a0aec0',
   }
 }
 

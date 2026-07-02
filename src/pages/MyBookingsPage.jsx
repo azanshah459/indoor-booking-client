@@ -62,6 +62,8 @@ function MyBookingsPage() {
     switch (status) {
       case 'Confirmed': return styles.confirmed
       case 'Cancelled': return styles.cancelled
+      case 'Expired': return styles.expired
+      case 'PendingPayment': return styles.pending
       default: return styles.pending
     }
   }
@@ -234,6 +236,14 @@ const styles = {
     borderRadius: '999px',
     fontSize: '0.8rem',
     fontWeight: '600',
+  },
+  expired: {
+  backgroundColor: '#fffaf0',
+  color: '#c05621',
+  padding: '0.25rem 0.75rem',
+  borderRadius: '999px',
+  fontSize: '0.8rem',
+  fontWeight: '600',
   },
   cancelButton: {
     backgroundColor: 'white',

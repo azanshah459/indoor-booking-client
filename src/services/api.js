@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:5143/api'
+  baseURL: 'https://indoor-booking-api-production.up.railway.app/api'
 })
 
 // This runs before every request

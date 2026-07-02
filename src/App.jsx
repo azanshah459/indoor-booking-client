@@ -11,6 +11,7 @@ import MyBookingsPage from './pages/MyBookingsPage'
 import AdminDashboardPage from './pages/AdminDashboardPage'
 import AdminGroundsPage from './pages/AdminGroundsPage'
 import AdminBookingsPage from './pages/AdminBookingsPage'
+import PaymentPage from './pages/PaymentPage'
 
 // Components
 import Navbar from './components/Navbar'
@@ -57,6 +58,11 @@ function App() {
         <Route path="/admin/bookings" element={
           <ProtectedRoute adminOnly={true}>
             <AdminBookingsPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/payment" element={
+          <ProtectedRoute>
+            <PaymentPage />
           </ProtectedRoute>
         } />
       </Routes>
