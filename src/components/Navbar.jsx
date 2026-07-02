@@ -1,102 +1,86 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import '../styles/Navbar.css'
 
 function Navbar() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
     navigate('/')
+    setMenuOpen(false)
   }
 
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <nav style={styles.nav}>
-      <Link to="/" style={styles.brand}>
-        Indoor Management
+    <nav className="navbar">
+      <Link to="/" className="navbar-brand" onClick={closeMenu}>
+        🏟️ Indoor Management
       </Link>
 
-      <div style={styles.links}>
-        <Link to="/grounds" style={styles.link}>Grounds</Link>
+      {/* Hamburger button - mobile only */}
+      <button
+        className="navbar-hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-        {/* Show these only when logged in as Customer */}
+      {/* Nav links */}
+      <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
+        <Link to="/grounds" className="navbar-link" onClick={closeMenu}>
+          Grounds
+        </Link>
+
         {user && user.role === 'Customer' && (
-          <Link to="/my-bookings" style={styles.link}>My Bookings</Link>
+          <Link to="/my-bookings" className="navbar-link" onClick={closeMenu}>
+            My Bookings
+          </Link>
         )}
 
-        {/* Show these only when logged in as Admin */}
         {user && user.role === 'Admin' && (
           <>
-            <Link to="/admin" style={styles.link}>Dashboard</Link>
-            <Link to="/admin/grounds" style={styles.link}>Manage Grounds</Link>
+            <Link to="/admin" className="navbar-link" onClick={closeMenu}>
+              Dashboard
+            </Link>
+            <Link to="/admin/grounds" className="navbar-link" onClick={closeMenu}>
+              Manage Grounds
+            </Link>
+            <Link to="/admin/bookings" className="navbar-link" onClick={closeMenu}>
+              All Bookings
+            </Link>
           </>
         )}
 
-        {/* Show Login/Register when not logged in */}
         {!user && (
           <>
-            <Link to="/login" style={styles.link}>Login</Link>
-            <Link to="/register" style={styles.link}>Register</Link>
+            <Link to="/login" className="navbar-link" onClick={closeMenu}>
+              Login
+            </Link>
+            <Link to="/register" className="navbar-link" onClick={closeMenu}>
+              Register
+            </Link>
           </>
         )}
 
-        {/* Show user name and logout when logged in */}
         {user && (
-          <div style={styles.userSection}>
-            <span style={styles.userName}>Hi, {user.name}</span>
-            <button onClick={handleLogout} style={styles.logoutBtn}>
+          <>
+            <span className="navbar-user-name">Hi, {user.name}</span>
+            <button onClick={handleLogout} className="navbar-logout-btn">
               Logout
             </button>
-          </div>
+          </>
         )}
       </div>
     </nav>
   )
-}
-
-const styles = {
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '0 2rem',
-    height: '60px',
-    backgroundColor: '#1a1a2e',
-    color: 'white',
-  },
-  brand: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-  },
-  links: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1.5rem',
-  },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '0.95rem',
-  },
-  userSection: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-  },
-  userName: {
-    color: '#a0aec0',
-    fontSize: '0.9rem',
-  },
-  logoutBtn: {
-    backgroundColor: '#e53e3e',
-    color: 'white',
-    border: 'none',
-    padding: '0.4rem 1rem',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  }
 }
 
 export default Navbar
