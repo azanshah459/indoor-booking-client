@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-brand" onClick={closeMenu}>
-        🏟️ Indoor Management
+        Indoor Management
       </Link>
 
       {/* Hamburger button - mobile only */}
