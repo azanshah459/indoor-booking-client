@@ -157,7 +157,7 @@ const styles = {
     lineHeight: '1.6',
   },
   cta: {
-    backgroundColor: '#346989',
+    backgroundColor: 'rgb(220 223 225)',
     textAlign: 'center',
     padding: '4rem 2rem',
     borderTop: '1px solid #e2e8f0',
